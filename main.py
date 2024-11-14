@@ -20,9 +20,11 @@ def main():
     else:
         exit(1)
 
-    get_all_students(token=token)
+    get_all_students(base_url=base_url,
+                     token=token)
 
-    register_students(token=token,
+    register_students(base_url=base_url,
+                      token=token,
                       email='student4',
                       firstname='student4',
                       lastname='studentov4',
