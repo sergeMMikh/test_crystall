@@ -3,15 +3,12 @@ from pprint import pprint
 from dotenv import load_dotenv
 import os
 
-url = 'http://172.31.60.129:8001/api/v1/auth/login/'
-
 load_dotenv()
 
 base_url = 'http://172.31.60.129:8001/api/v1/'
 
 
-def main():
-    print(f"username: {os.getenv('APP_USERNAME')}")
+def authorization(username: str, password: str) -> str:
     response = requests.post(
         # url=url,
         url=f'{base_url}auth/login/',
@@ -21,8 +18,8 @@ def main():
         },
         data={
             'grant_type': 'password',
-            'username': os.getenv('APP_USERNAME'),
-            'password': os.getenv('APP_PASSWORD'),
+            'username': username,
+            'password': password,
             'scope': '',
             'client_id': 'string',
             'client_secret': 'string'
@@ -36,12 +33,14 @@ def main():
 
         token = data.get('access_token')
         print(f'token: {token}')
+        return token
     else:
         print(f'Error: {response.status_code}, {response.text}')
-        exit(1)
+        return 'Error'
 
+
+def get_all_students(token):
     response = requests.get(
-        # url='http://localhost:8001/api/v1/student/?page_number=0&page_size=10',
         url=f'{base_url}student/?page_number=0&page_size=10',
         headers={
             'accept': 'application/json',
@@ -52,12 +51,13 @@ def main():
         data = response.json()
         print("Response:")
         pprint(data)
-
+        return 'ok'
     else:
         print(f'Error: {response.status_code}, {response.text}')
-        exit(1)
+        return 'Error'
 
-    # register_url = 'http://localhost:8001/api/v1/user/register/'
+
+def register_students(token, email, firstname, lastname, surname, birthday):
     register_url = f'{base_url}user/register/'
     headers = {
         'accept': 'application/json',
@@ -70,12 +70,12 @@ def main():
     for i in range(num_students):
         # Форматирование данных для каждого студента с уникальными значениями на основе итератора i
         student_data = {
-            "email": f"student2{i}@example.com",
+            "email": f"{email}{i}@example.com",
             "password": f"passwd2{i}",
-            "firstname": f"student2{i}",
-            "lastname": f"studentov2{i}",
-            "surname": f"studentovich2{i}",
-            "birthday": f"2020-10-{10 + i:02}T15:41:16.490Z",  # уникальная дата на основе i
+            "firstname": f"{firstname}{i}",
+            "lastname": f"{lastname}{i}",
+            "surname": f"{surname}{i}",
+            "birthday": f"2020-12-{10 + i:02}T15:41:16.490Z",
             "is_man": True,
             "contact": "string"
         }
@@ -93,6 +93,25 @@ def main():
             pprint(response.json())
         else:
             print(f'Error registering student {i}: {response.status_code}, {response.text}')
+
+
+def main():
+    authorize = authorization(username=os.getenv('APP_USERNAME'),
+                              password=os.getenv('APP_PASSWORD'))
+
+    if authorize != 'Error':
+        token = authorize
+    else:
+        exit(1)
+
+    get_all_students(token=token)
+
+    register_students(token=token,
+                      email='student4',
+                      firstname='student4',
+                      lastname='studentov4',
+                      surname='studentovich4',
+                      birthday='2020-05-')
 
 
 if __name__ == "__main__":
