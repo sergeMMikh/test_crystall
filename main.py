@@ -25,11 +25,11 @@ def main():
 
     register_students(base_url=base_url,
                       token=token,
-                      email='student4',
-                      firstname='student4',
-                      lastname='studentov4',
-                      surname='studentovich4',
-                      birthday='2020-05-')
+                      email='student5',
+                      firstname='student5',
+                      lastname='studentov5',
+                      surname='studentovich5',
+                      birthday='2020-06-')
 
 
 if __name__ == "__main__":
