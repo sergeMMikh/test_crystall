@@ -36,8 +36,8 @@ def main():
     #                   birthday='2020-06-')
 
     # Создание занятия
-    create_lesson(base_url=base_url,
-                  token=token)
+    # create_lesson(base_url=base_url,
+    #               token=token)
 
     # Получение всех занятий
     get_all_lessons(base_url=base_url,
