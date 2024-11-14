@@ -13,7 +13,7 @@ def main():
     authorize = authorization(
         base_url=base_url,
         username=os.getenv('APP_USERNAME'),
-                              password=os.getenv('APP_PASSWORD'))
+        password=os.getenv('APP_PASSWORD'))
 
     if authorize != 'Error':
         token = authorize
