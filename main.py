@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 
 from authorization import authorization
-from lessons import get_all_lessons, create_lesson
+from lessons import create_check_list, get_all_lessons, create_lesson
 from students import get_all_students, register_students
 
 load_dotenv()
@@ -14,8 +14,10 @@ def main():
     # Получение токена для дальнейшей работы
     authorize = authorization(
         base_url=base_url,
-        username=os.getenv('APP_USERNAME'),
-        password=os.getenv('APP_PASSWORD'))
+        # username=os.getenv('APP_USERNAME'),
+        # password=os.getenv('APP_PASSWORD'))
+        username='trainer@crystal.com',
+        password='trainerpass')
 
     if authorize != 'Error':
         token = authorize
@@ -42,8 +44,10 @@ def main():
     # Получение всех занятий
     get_all_lessons(base_url=base_url,
                     token=token)
-
-
+    
+    create_check_list(
+        base_url=base_url,
+        token=token)
 
 
 if __name__ == "__main__":
