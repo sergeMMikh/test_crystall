@@ -7,7 +7,7 @@ from students import get_all_students, register_students
 
 load_dotenv()
 
-base_url = 'http://172.31.60.129:8001/api/v1/'
+base_url = 'http://172.30.19.115:8001/api/v1/'
 
 
 def main():
@@ -22,11 +22,11 @@ def main():
     else:
         exit(1)
 
-    # Получение списка всех студентов
+    # # Получение списка всех студентов
     # get_all_students(base_url=base_url,
     #                  token=token)
 
-    # Регистрация студентов
+    # # Регистрация студентов
     # register_students(base_url=base_url,
     #                   token=token,
     #                   email='student5',
@@ -35,7 +35,7 @@ def main():
     #                   surname='studentovich5',
     #                   birthday='2020-06-')
 
-    # Создание занятия
+    # # Создание занятия
     # create_lesson(base_url=base_url,
     #               token=token)
 
