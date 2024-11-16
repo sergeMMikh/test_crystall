@@ -53,7 +53,7 @@ def create_lesson(base_url: str,
 
 def create_check_list(base_url: str, token: str):
     # Правильный URL для создания чек-листа
-    register_url = f'{base_url}lesson/create-check/'
+    register_url = f'{base_url}check/'
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
