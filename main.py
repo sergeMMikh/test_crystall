@@ -42,8 +42,8 @@ def main():
     #               token=token)
 
     # Получение всех занятий
-    get_all_lessons(base_url=base_url,
-                    token=token)
+    # get_all_lessons(base_url=base_url,
+    #                 token=token)
     
     create_check_list(
         base_url=base_url,
