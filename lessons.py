@@ -62,12 +62,12 @@ def create_check_list(base_url: str, token: str):
 
     # Данные для создания чек-листа
     lesson_data = { 
-        # "student_ids": [4, 5, 6],  # Используйте существующие ID студентов
+        "students_id": [4, 5, 6],  # Используйте существующие ID студентов
         "lesson_id": 1,
-        # "training_check": [
-        #     {"training_id": 1, "repetitions": 5},
-        #     {"training_id": 2, "repetitions": 8}
-        # ]    
+        "training_check": [
+            {"training_id": 1, "repetitions": 5},
+            {"training_id": 2, "repetitions": 8}
+        ]    
     }
 
     
