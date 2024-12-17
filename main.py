@@ -7,7 +7,7 @@ from students import get_all_students, register_students
 
 load_dotenv()
 
-base_url = 'http://172.30.19.115:8001/api/v1/'
+base_url = 'http://172.30.168.15:8001/api/v1/'
 
 
 def main():
@@ -42,8 +42,8 @@ def main():
     #               token=token)
 
     # Получение всех занятий
-    # get_all_lessons(base_url=base_url,
-    #                 token=token)
+    get_all_lessons(base_url=base_url,
+                    token=token)
     
     create_check_list(
         base_url=base_url,
