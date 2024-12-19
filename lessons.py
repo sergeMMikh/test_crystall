@@ -29,6 +29,8 @@ def create_lesson(base_url: str,
         'Authorization': f'Bearer {token}'
     }
 
+    print("create_lesson")
+
     lesson_data = {
         "space_id": 1,
         "trainer_id": 1,
@@ -52,7 +54,7 @@ def create_lesson(base_url: str,
 
 
 def create_check_list(base_url: str, token: str):
-    # Правильный URL для создания чек-листа
+    # Cозданиt чек-листа
     register_url = f'{base_url}check/'
     headers = {
         'accept': 'application/json',
