@@ -16,30 +16,43 @@ def main():
         base_url=base_url,
         # username=os.getenv('APP_USERNAME'),
         # password=os.getenv('APP_PASSWORD'))
-        username='trainer@crystal.com',
-        password='trainerpass')
+        username='supervisor@crystal.com',
+        password='supervisorpass')
 
     if authorize != 'Error':
         token = authorize
     else:
         exit(1)
 
-    # # Получение списка всех студентов
-    # get_all_students(base_url=base_url,
-    #                  token=token)
+    # Получение списка всех студентов
+    get_all_students(base_url=base_url,
+                     token=token)
 
     # # Регистрация студентов
     # register_students(base_url=base_url,
     #                   token=token,
-    #                   email='student5',
-    #                   firstname='student5',
-    #                   lastname='studentov5',
-    #                   surname='studentovich5',
+    #                   email='student6',
+    #                   firstname='student6',
+    #                   lastname='studentov6',
+    #                   surname='studentovich6',
     #                   birthday='2020-06-')
 
-    # # Создание занятия
-    # create_lesson(base_url=base_url,
-    #               token=token)
+    # Создание занятия
+    create_lesson(base_url=base_url,
+                  token=token)
+
+    # Получение токена для дальнейшей работы
+    authorize = authorization(
+        base_url=base_url,
+        # username=os.getenv('APP_USERNAME'),
+        # password=os.getenv('APP_PASSWORD'))
+        username='trainer@crystal.com',
+        password='trainerpass')
+    
+    if authorize != 'Error':
+        token = authorize
+    else:
+        exit(1)
 
     # Получение всех занятий
     get_all_lessons(base_url=base_url,
