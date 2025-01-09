@@ -86,3 +86,30 @@ def create_check_list(base_url: str, token: str):
         pprint(response.json())
     else:
         print(f'Error creating check-list: {response.status_code}, {response.text}')
+
+
+def get_all_check(base_url: str, token: str):
+    payload = {
+        "lesson_id": None,  # Или укажите ID урока, например, 1
+        "student_id": None  # Или укажите ID студента, например, 1
+    }
+    
+    response = requests.get(
+        url=f'{base_url}check/list',
+        headers={
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {token}'
+        },
+        json=payload
+        )
+
+    if response.status_code == 200:
+        data = response.json()
+        print("Response:")
+        pprint(data)
+        return 'ok'
+    else:
+        print(f'Error: {response.status_code}, {response.text}')
+        return 'Error'
+    
