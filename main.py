@@ -4,6 +4,7 @@ import os
 from authorization import authorization
 from lessons import create_check_list, get_all_lessons, create_lesson, get_all_check
 from students import get_all_students, register_students
+from check import create_check_list, get_list_of_check
 
 load_dotenv()
 
@@ -24,9 +25,9 @@ def main():
     else:
         exit(1)
 
-    # Получение списка всех студентов
-    get_all_students(base_url=base_url,
-                     token=token)
+    # # Получение списка всех студентов
+    # get_all_students(base_url=base_url,
+    #                  token=token)
 
     # # Регистрация студентов
     # register_students(base_url=base_url,
@@ -38,8 +39,8 @@ def main():
     #                   birthday='2020-06-')
 
     # Создание занятия
-    create_lesson(base_url=base_url,
-                  token=token)
+    # create_lesson(base_url=base_url,
+    #               token=token)
 
     # Получение токена для дальнейшей работы
     authorize = authorization(
@@ -65,7 +66,6 @@ def main():
     # Получение всех check
     get_all_check(base_url=base_url,
                       token=token)
-
 
 if __name__ == "__main__":
     main()
