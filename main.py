@@ -7,7 +7,7 @@ from students import get_all_students, register_students
 
 load_dotenv()
 
-base_url = 'http://172.31.60.129:8001/api/v1/'
+base_url = 'http://127.0.0.1:8001/api/v1/'
 
 
 def main():
