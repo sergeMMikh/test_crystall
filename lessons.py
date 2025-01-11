@@ -32,7 +32,7 @@ def create_lesson(base_url: str,
     print("create_lesson")
 
     lesson_data = {
-        "space_id": 1,
+        "space_id": 3,
         "trainer_id": 1,
         "trainer_comments": "message",
         "start": "2024-11-15T16:39:40.975Z"
@@ -89,11 +89,16 @@ def create_check_list(base_url: str, token: str):
 
 
 def get_all_check(base_url: str, token: str):
+    # payload = {
+    #     "lesson_id": None,  # Или укажите ID урока, например, 1
+    #     "student_id": None  # Или укажите ID студента, например, 1
+    # }
+
     payload = {
-        "lesson_id": None,  # Или укажите ID урока, например, 1
-        "student_id": None  # Или укажите ID студента, например, 1
+        "lesson_id": 1,  # Или укажите ID урока, например, 1
+        "student_id": 2  # Или укажите ID студента, например, 1
     }
-    
+
     response = requests.get(
         url=f'{base_url}check/list',
         headers={

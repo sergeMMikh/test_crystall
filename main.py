@@ -25,8 +25,8 @@ def main():
         exit(1)
 
     # Получение списка всех студентов
-    get_all_students(base_url=base_url,
-                     token=token)
+    # get_all_students(base_url=base_url,
+    #                  token=token)
 
     # # Регистрация студентов
     # register_students(base_url=base_url,
@@ -38,8 +38,8 @@ def main():
     #                   birthday='2020-06-')
 
     # Создание занятия
-    create_lesson(base_url=base_url,
-                  token=token)
+    # create_lesson(base_url=base_url,
+    #               token=token)
 
     # Получение токена для дальнейшей работы
     authorize = authorization(
