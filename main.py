@@ -1,30 +1,30 @@
 from dotenv import load_dotenv
 import os
 
-from authorization import authorization
+from authorization import authorization, base_url, super_tocken, treiner_tocken
 from lessons import create_check_list, get_all_lessons, create_lesson, get_all_check
 from students import get_all_students, register_students
+from check import create_check_list, get_list_of_check
 
 load_dotenv()
 
-base_url = 'http://127.0.0.1:8001/api/v1/'
+
 
 
 def main():
     # Получение токена для дальнейшей работы
-    authorize = authorization(
-        base_url=base_url,
-        # username=os.getenv('APP_USERNAME'),
-        # password=os.getenv('APP_PASSWORD'))
-        username='supervisor@crystal.com',
-        password='supervisorpass')
+    authorize = super_tocken()
 
     if authorize != 'Error':
         token = authorize
     else:
         exit(1)
 
+<<<<<<< HEAD
     # Получение списка всех студентов
+=======
+    # # Получение списка всех студентов
+>>>>>>> 6eabfa8074aa107b2b4ca43fb3ed7080be5d6a07
     # get_all_students(base_url=base_url,
     #                  token=token)
 
@@ -42,12 +42,7 @@ def main():
     #               token=token)
 
     # Получение токена для дальнейшей работы
-    authorize = authorization(
-        base_url=base_url,
-        # username=os.getenv('APP_USERNAME'),
-        # password=os.getenv('APP_PASSWORD'))
-        username='trainer@crystal.com',
-        password='trainerpass')
+    authorize = treiner_tocken()
     
     if authorize != 'Error':
         token = authorize
@@ -62,10 +57,13 @@ def main():
     #     base_url=base_url,
     #     token=token)
 
-    # Получение всех check
+    # Получение всех check для тренера
     get_all_check(base_url=base_url,
                       token=token)
-
+    
+    # Получение всех check для супера
+    get_all_check(base_url=base_url,
+                      token=super_tocken())
 
 if __name__ == "__main__":
     main()
