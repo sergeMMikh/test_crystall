@@ -1,6 +1,28 @@
 import requests
 from pprint import pprint
 
+def create_space(base_url: str, token: str, name: str):
+    response = requests.post(
+        url=f'{base_url}space/?page_number=0&page_size=10',
+        headers={
+            'accept': 'application/json',
+            'Authorization': f'Bearer {token}'
+        },
+        json={
+            "name": name
+        },
+        )
+    
+
+
+    if response.status_code == 200:
+        data = response.json()
+        print("Response:")
+        pprint(data)
+        return 'ok'
+    else:
+        print(f'Error: {response.status_code}, {response.text}')
+        return 'Error'
 
 def get_all_lessons(base_url: str, token: str):
     response = requests.get(
@@ -21,7 +43,8 @@ def get_all_lessons(base_url: str, token: str):
 
 
 def create_lesson(base_url: str,
-                  token: str):
+                  token: str, 
+                  space_id: int):
     register_url = f'{base_url}lesson/'
     headers = {
         'accept': 'application/json',
@@ -32,7 +55,7 @@ def create_lesson(base_url: str,
     print("create_lesson")
 
     lesson_data = {
-        "space_id": 3,
+        "space_id": space_id,
         "trainer_id": 1,
         "trainer_comments": "message",
         "start": "2024-11-15T16:39:40.975Z"

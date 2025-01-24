@@ -1,7 +1,7 @@
 import requests
 from pprint import pprint
 
-base_url = 'http://127.0.0.1:8001/api/v1/'
+base_url = 'http://127.0.0.1:8000/api/v1/'
 
 def authorization(base_url: str, username: str, password: str) -> str:
     response = requests.post(
